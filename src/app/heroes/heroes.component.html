@@ -1,0 +1,32 @@
+<h2>{{dvh_hero.dvh_name|uppercase}} Detail</h2>
+<div><span>id: </span>{{dvh_hero.dvh_id}}</div>
+<div><span>name: </span>{{dvh_hero.dvh_name}}</div>
+
+<div>
+  <label for="name"> Hero name: </label>
+  <input type="text" id="name" placeholder="name"
+  [(ngModel)]="dvh_hero.dvh_name">
+ 
+</div>
+<div>
+<app-messages></app-messages>
+</div>  
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let dvh_hero of dvh_list_hero" [class.selected]="dvh_hero === selectedHero"  (click)="onSelect(dvh_hero)">
+    <span class="badge">{{dvh_hero.dvh_id}}</span>
+    {{dvh_hero.dvh_name}}
+  </li>
+  
+</ul>
+
+<!-- <div *ngIf="selectedHero">
+  <h2>{{selectedHero.dvh_name | uppercase}} Detail</h2>
+  <div><span>id: </span>{{selectedHero.dvh_id}}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input type="text" id="hero-name" [(ngModel)]="selectedHero.dvh_name" placeholder="name">
+  </div>
+</div> -->
+
+<app-hero-detail [dvh_hero]="selectedHero"></app-hero-detail>
